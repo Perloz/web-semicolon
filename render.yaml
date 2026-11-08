@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: semicolon-academy
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_PATH
+        value: /var/data/users.db
+    disk:
+      name: semicolon-academy-data
+      mountPath: /var/data
+      sizeGB: 1

@@ -1,0 +1,156 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom CSS Variables for Root Theme */
+:root {
+  --color-brand-primary: #6366f1;
+  --color-brand-secondary: #a855f7;
+  --gradient-brand: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --gradient-brand-hover: linear-gradient(135deg, #5856eb 0%, #9333ea 100%);
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  
+  /* Light mode variables */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --text-primary: #171717;
+  --text-secondary: #6b7280;
+  --border-color: #f5f5f5;
+  --border-color-hover: #e5e5e5;
+}
+
+/* Dark mode variables */
+.dark {
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.3), 0 10px 20px -2px rgba(0, 0, 0, 0.2);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --border-color: #1e293b;
+  --border-color-hover: #334155;
+}
+
+/* Ensure smooth transitions */
+*, *::before, *::after {
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Custom Components */
+.btn-gradient {
+  background: var(--gradient-brand);
+  transition: all 0.2s ease;
+}
+
+.btn-gradient:hover {
+  background: var(--gradient-brand-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-modern {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.card-modern:hover {
+  box-shadow: var(--shadow-soft);
+  border-color: var(--border-color-hover);
+}
+
+.border-gradient {
+  border-image: var(--gradient-brand) 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Like button animation */
+.like-button:active {
+  animation: heartBeat 0.3s ease-in-out;
+}
+
+/* Liked state glow effect */
+.liked-heart {
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.3));
+}
+
+/* Hover effects */
+.heart-hover:hover {
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.4));
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5856eb, #9333ea);
+}
